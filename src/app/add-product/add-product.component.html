@@ -1,0 +1,146 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-header" style="background-color: aquamarine;">
+          <h4 class="card-title">Add Product</h4>
+        </div>
+
+        <div class="card-body bodyFormDesign">
+
+          <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label> Name</label>
+                  <input type="text" formControlName="name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Product Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" *ngIf="!auction">
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="number" formControlName="price" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                  <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                    <div *ngIf="f.price.errors.required">Price is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Cleaning Fish</label>
+                  <input type="number" formControlName="cleaningFish" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.cleaningFish.errors }" />
+                </div>
+              </div>
+
+              
+
+            </div>
+
+            
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Quantity</label>
+                  <input type="number" formControlName="quantity" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+                  <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                    <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Size</label>
+                  <!-- <input type="text" formControlName="size" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.size.errors }" /> -->
+                    <select formControlName="size" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.size.errors }" placeholder="fish size">
+                      <!-- <option hidden selected>Select Fish Size</option> -->
+                      <option value="SMALL">SMALL</option>
+                      <option value="MEDIUM">MEDIUM</option>
+                      <option value="LARGE">LARGE</option>
+                    </select>
+                  <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+                    <div *ngIf="f.size.errors.required">Size is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="imageOne" >Image One</label>
+                <div class="chngBannerImages">
+                  <img class="img-fluid"  *ngFor="let url_imageone of urls_imageOne" [src]="url_imageone" width="100" height="150" class="form-control"  alt="Cover">
+                </div>
+                <div class="changeBrowseBtn">
+                <input type="file" id="imageOne" name="imageOne" (change)="fileUploadImageOne($event)" class="form-control">
+                <span>Browse Image</span>
+                </div>
+                <div *ngIf="submitted && f.imageOne.errors" class="invalid-feedback">
+                  <div *ngIf="f.imageOne.errors.required">Image is required</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="imageTwo" >Image Two</label>
+                <div class="chngBannerImages">
+                  <img class="img-fluid"  *ngFor="let url_imagetwo of urls_imageTwo" [src]="url_imagetwo" width="100" height="150" class="form-control"  alt="Cover">
+                </div>
+                <div class="changeBrowseBtn">
+                <input type="file" id="imageTwo" name="imageTwo" (change)="fileUploadImageTwo($event)" class="form-control">
+                <span>Browse Image</span>
+                </div>
+                <div *ngIf="submitted && f.imageTwo.errors" class="invalid-feedback">
+                  <div *ngIf="f.imageTwo.errors.required">Image is required</div>
+                </div>
+              </div>
+            </div><br>
+            
+            <div class="form-group">
+              <label>Description</label>
+              <ckeditor [editor]="Editor" formControlName="description"
+                [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+              </ckeditor>
+              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.validEditor">Description is required</div>
+              </div>
+              <div *ngIf="des_msg" style="color: red">Description is required</div>
+            </div>
+
+            <div *ngIf="auctionError"> 
+              <p style="color: red;">{{auctionMSg}}</p>
+          </div>
+
+            <div class="submitBtnBnr">
+        
+              <button type="submit" class="btn btn-primary custom-button"> Submit </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+  </div>
+</div>

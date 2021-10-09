@@ -1,0 +1,124 @@
+<div id="top"></div>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header headerFlex" style="background-color: aquamarine;">
+          <h4 class="card-title"> Admin Product List</h4>
+          <span class="addNewBtn">
+            <a [routerLink]="['/add-product']" class="btn btn-primary custom-button"><i class="fa fa-plus"></i> Add
+              Product</a>
+          </span>
+        </div>
+        <div class="eventListPage">
+          <div class="row">
+            <!-- <div class="col-md-12">
+            <div class="searchList">
+              <input   (keyup)="search($event)" #text  placeholder="Search by name..">
+              <span _ngcontent-c5="" class="searchIcon"><i _ngcontent-c5="" class="fa fa-search"></i></span>
+            </div>
+          </div> -->
+
+            <div class="col-md-12 row" style="
+            padding-bottom: 0.5em;">
+
+            <div class="col-md-3 mx-auto" style="
+            padding-top: 1.7em;">
+                <h4>Filter Data By : </h4>
+              </div>
+               
+              <div class="Col-md-3">
+                <label>From Date</label>
+                <!-- <ngx-datetime-picker id="timevalue" [(ngModel)]="data.startDate"  class="form-control" #timevalue
+                ></ngx-datetime-picker> -->
+                <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="data.startDate">
+              </div>
+              <div class="col-md-3">
+                <label>To Date</label>
+                <!-- <ngx-datetime-picker id="timevalue" [(ngModel)]="data.endDate"  class="form-control" #timevalue >
+              </ngx-datetime-picker> -->
+                <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="data.endDate">
+              </div>
+
+              <div class="col-md-3 text-center" style="
+            padding-top: 1.5em;">
+                <button class="btn btn-success" (click)="filterData()">Submit</button>
+              </div>
+
+
+            </div>
+
+
+            <div *ngIf="!products.length" class="eventNoFound">
+              No product found
+            </div>
+            <div *ngIf="products.length" class="eventUserList col-md-12">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+
+                      <th>Sr No</th>
+                      <th>Name</th>
+                      <th>Size</th>
+                      <th>Unit</th>
+                      <th>Quantity</th>
+                      <th>Price/Kg</th>
+                      <!-- <th>Status</th> -->
+                      <th>Description</th>
+                      <th>Created Date</th>
+                      <th>Order Placed</th>
+                      <th> Make Product(Normal/Auction)</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of products; let i= index;">
+                        <td>{{ i+1}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.size}}</td>
+                        <td>{{product.unit}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>{{product.price}}</td>
+                        <!-- <td>{{product.status}}</td>  -->
+                        <td>{{product.description}}</td>
+                        <td>{{product.createdAt | date: "shortDate"}}</td>
+                        <td>{{product.orderPlaced}}</td>
+                        <td>
+                          <!-- <div class="dropdown"> -->
+                          <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                              Make Product
+                            </button> -->
+                          <!-- <div class="dropdown-menu"> -->
+                          <button class="btn custom-button"
+                            [ngClass]="{'btn-secondary' : product.orderPlaced == 'YES','btn-primary' : product.orderPlaced != 'YES'}"
+                            (click)="viewProduct(product._id,'normal',product.orderPlaced)">Normal</button>
+                          <button class="btn custom-button"
+                            [ngClass]="{'btn-secondary' : product.orderPlaced == 'YES','btn-primary' : product.orderPlaced != 'YES'}"
+                            (click)="viewProduct(product._id,'auction',product.orderPlaced)">Auction</button>
+                          <!-- </div> -->
+                          <!-- </div> -->
+                        </td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center" *ngIf="products.length">
+          <ngb-pagination [collectionSize]="total" [(page)]="where.page" [maxSize]="5" [pageSize]="where.limit"
+            [rotate]="true" [boundaryLinks]="false" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>

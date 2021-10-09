@@ -1,0 +1,64 @@
+<div id="top"></div>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header headerFlex" style="background-color: aquamarine;">
+          <h4 class="card-title"> Auctions Winner List</h4>
+        </div>
+        <div class="eventListPage">
+          <div class="row">
+            <!-- <div class="col-md-12">
+            <div class="searchList">
+              <input   (keyup)="search($event)" #text  placeholder="Search by name..">
+              <span _ngcontent-c5="" class="searchIcon"><i _ngcontent-c5="" class="fa fa-search"></i></span>
+            </div>
+          </div> -->
+            <div *ngIf="!products.length" class="eventNoFound">
+              No product found
+            </div>
+            <div *ngIf="products.length" class="eventUserList col-md-12">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+
+                      <th>userName</th>
+                      <th>mobile</th>
+                      <th>productName</th>
+                      <th>quantity</th>
+                      <th>price</th>
+                      <th>dateTime</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of products; let i= index;">
+                        <td>{{product.userId.name}}</td>
+                        <td>{{product.userId.mobileNumber}}</td>
+                        <td>{{product.productId.name}}</td>
+                        <td>{{product.productId.quantity}}</td>
+                        <td>{{product.productId.price}}</td>
+                        <td>{{product.createdAt| date: "shortDate"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center" *ngIf="products.length">
+          <ngb-pagination [collectionSize]="total" [(page)]="where.page" [maxSize]="5" [pageSize]="where.limit"
+            [rotate]="true" [boundaryLinks]="false" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>

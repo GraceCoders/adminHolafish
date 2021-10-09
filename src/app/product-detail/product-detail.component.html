@@ -1,0 +1,152 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      
+
+      <div class="card">
+        <div class="card-header" style="background-color: aquamarine;">
+          <h4 class="card-title">Product Details</h4>
+        </div>
+        <div class="card-body bodyFormDesign">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Image One</h6>
+                <img src={{details.productId.imageOne}} width="100" height="100" alt="Italian Trulli">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Image Two</h6>
+                <img src={{details.productId.imageTwo}} width="100" height="100" alt="Italian Trulli">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6>Name Of Fish</h6>
+                {{details.productId.name}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Price</h6>
+                {{details.productId.price}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Quantity in {{details.productId.unit}}</h6>
+                {{details.productId.quantity}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Size</h6>
+                {{details.productId.size}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6>Description</h6>
+                {{details.productId.description}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Order Placed</h6>
+                {{details.productId.orderPlaced}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Status</h6>
+                {{details.productId.status}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-header" style="background-color: aquamarine;">
+          <h4 class="card-title">Vendor Details</h4>
+        </div>
+
+        
+
+        <div class="card-body bodyFormDesign">
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <h6> Profile Image</h6>
+                <img src={{details.vendorId.profileImage}} width="100" height="100" alt="Italian Trulli">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> name</h6>
+                {{details.vendorId.name}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Email</h6>
+                {{details.vendorId.email}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Mobile Number</h6>
+                {{details.vendorId.mobileNumber}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> Address</h6>
+                {{details.vendorId.address}}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h6> status</h6>
+                {{details.vendorId.status}}
+              </div>
+            </div>
+
+            
+
+            <div style="text-align: center;">
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+  </div>
+</div>
